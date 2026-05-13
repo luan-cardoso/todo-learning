@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+
+body {
+    color: #d1d1d1;
+    margin: 0;
+    background-color: #0c0f1e;
+    font-family: "Montserrat", sans-serif;
+}
+
+.bg-grid {
+    background-color: rgba(255, 255, 255, 0.03);
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
