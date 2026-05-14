@@ -1,6 +1,6 @@
 import { apiFetch } from "./api";
 
-export async function getTasks(page = 1, limit = 10) {
+export async function getTasks(page = 1, limit = 9) {
   return apiFetch(`/api/tasks?page=${page}&limit=${limit}`, { auth: true });
 }
 
