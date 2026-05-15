@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "./Button";
-import { faLanguage } from "@fortawesome/free-solid-svg-icons/faLanguage";
 import {
   faArrowRightFromBracket,
   faPlus,
@@ -25,14 +24,15 @@ export default function Nav({ onAddClick }: NavProps) {
         {userName && (
           <Button buttonLabel="Adicionar" icon={faPlus} onClick={onAddClick} />
         )}
-        <FontAwesomeIcon icon={faLanguage} size="lg" />
         {userName && (
-          <FontAwesomeIcon
-            icon={faArrowRightFromBracket}
-            size="lg"
-            className="cursor-pointer"
+          <button
+            type="button"
             onClick={handleLogout}
-          />
+            aria-label="Sair da conta"
+            className="text-neutral-300 hover:text-amber-400 transition-colors cursor-pointer p-1"
+          >
+            <FontAwesomeIcon icon={faArrowRightFromBracket} size="lg" />
+          </button>
         )}
       </div>
     </div>

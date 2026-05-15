@@ -28,6 +28,8 @@ export default function RegisterPage() {
       } else {
         setError("Erro inesperado");
       }
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -42,6 +44,7 @@ export default function RegisterPage() {
           Nome e Sobrenome
         </label>
         <input
+          id="name"
           name="name"
           maxLength={20}
           placeholder="Luan Cardoso"
@@ -57,6 +60,7 @@ export default function RegisterPage() {
           Email
         </label>
         <input
+          id="email"
           name="email"
           type="email"
           placeholder="email@example.com"
@@ -73,6 +77,7 @@ export default function RegisterPage() {
           Senha
         </label>
         <input
+          id="password"
           name="password"
           type="password"
           placeholder="Senha"

@@ -1,7 +1,24 @@
 import { apiFetch } from "./api";
 
-export async function getTasks(page = 1, limit = 9) {
-  return apiFetch(`/api/tasks?page=${page}&limit=${limit}`, { auth: true });
+export const TASKS_PAGE_SIZE = 9;
+
+export type GetTasksFilters = {
+  completed?: boolean;
+};
+
+export async function getTasks(
+  page = 1,
+  limit = TASKS_PAGE_SIZE,
+  filters?: GetTasksFilters,
+) {
+  const params = new URLSearchParams({
+    page: String(page),
+    limit: String(limit),
+  });
+  if (filters?.completed !== undefined) {
+    params.set("completed", String(filters.completed));
+  }
+  return apiFetch(`/api/tasks?${params.toString()}`, { auth: true });
 }
 
 export async function createTask(data: {

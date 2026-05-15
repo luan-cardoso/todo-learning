@@ -1,9 +1,15 @@
+import { useSyncExternalStore } from "react";
 import { logout } from "../lib/auth";
+import { getAuthToken, subscribeAuth } from "../lib/authSession";
 import { useNavigate } from "react-router-dom";
 
 export function useAuth() {
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
+  const token = useSyncExternalStore(
+    subscribeAuth,
+    getAuthToken,
+    () => null,
+  );
 
   // Pega o nome do usuário do token JWT (payload)
   let userName: string | null = null;
