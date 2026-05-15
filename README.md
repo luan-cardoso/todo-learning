@@ -1,65 +1,6 @@
 # Todo Learning
 
-Aplicação web para organizar temas de estudo: cadastro de tarefas por matéria, níveis de dificuldade, conclusão e paginação. Desenvolvida com React, TypeScript, Vite e Tailwind CSS.
-
-## Pré-requisitos
-
-- [Node.js](https://nodejs.org/) 18 ou superior
-- npm (incluído com o Node)
-- API backend compatível com os endpoints descritos abaixo
-
-## Configuração
-
-1. Clone o repositório e entre na pasta do projeto:
-
-```bash
-git clone <url-do-repositorio>
-cd todo-learning
-```
-
-2. Instale as dependências:
-
-```bash
-npm install
-```
-
-3. Crie o arquivo de ambiente a partir do exemplo:
-
-```bash
-cp .env.example .env
-```
-
-4. Edite o `.env` com os valores da sua API:
-
-| Variável        | Descrição                                      |
-|-----------------|------------------------------------------------|
-| `VITE_API_URL`  | URL base da API (sem barra no final)           |
-| `VITE_API_KEY`  | Chave enviada no header `x-api-key`            |
-
-## Executando o projeto
-
-**Desenvolvimento** (com hot reload):
-
-```bash
-npm run dev
-```
-
-Abra o endereço exibido no terminal (geralmente `http://localhost:5173`).
-
-**Build de produção:**
-
-```bash
-npm run build
-npm run preview
-```
-
-**Verificação de código:**
-
-```bash
-npm run lint
-```
-
-## Como usar o app
+### Como usar o app
 
 ### 1. Criar conta
 
@@ -126,17 +67,7 @@ O front-end consome:
 | POST   | `/api/tasks`          | Criar tarefa           |
 | PUT    | `/api/tasks/:id`      | Atualizar (ex.: `completed`) |
 | DELETE | `/api/tasks/:id`      | Remover tarefa         |
-
-Requisições autenticadas enviam `Authorization: Bearer <token>` e `x-api-key` conforme configurado no `.env`.
-
-## Scripts npm
-
-| Comando           | Descrição                    |
-|-------------------|------------------------------|
-| `npm run dev`     | Servidor de desenvolvimento  |
-| `npm run build`   | TypeScript + build Vite      |
-| `npm run preview` | Preview do build             |
-| `npm run lint`    | ESLint                       |
+                    |
 
 ## Licença
 
