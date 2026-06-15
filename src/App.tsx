@@ -36,19 +36,17 @@ const Home = () => {
       <Nav onAddClick={() => setShowForm(true)} />
       <div className="w-full bg-white/15 h-px" />
       <Intro pendingTasks={pendingTasks} />
-      <section className="max-w-6xl grid grid-rows-3 grid-cols-3 gap-6 py-10 min-h-[24rem]">
+      <section className="max-w-6xl grid grid-cols-3 gap-6 py-10 min-h-96">
         {loading && tasks.length === 0 && (
           <p className="col-span-full text-center text-sm text-neutral-500">
             Carregando tarefas...
           </p>
         )}
-        {!loading &&
-          tasks.length === 0 &&
-          page === 1 && (
-            <p className="col-span-full text-center text-sm text-neutral-500">
-              Nenhuma tarefa encontrada.
-            </p>
-          )}
+        {!loading && tasks.length === 0 && page === 1 && (
+          <p className="col-span-full text-center text-sm text-neutral-500">
+            Nenhuma tarefa encontrada.
+          </p>
+        )}
         {tasks.map((task) => (
           <Card
             key={task._id}
