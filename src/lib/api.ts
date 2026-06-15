@@ -1,3 +1,5 @@
+import { notifyAuthChange } from "./authSession";
+
 const BASE_URL = import.meta.env.VITE_API_URL;
 const API_KEY = import.meta.env.VITE_API_KEY;
 
@@ -30,9 +32,16 @@ export async function apiFetch(path: string, options: FetchOptions = {}) {
     body: body ? JSON.stringify(body) : undefined,
   });
 
+  // intercepta 401 e limpa sessão
+  if (res.status === 401) {
+    const hadToken = !!localStorage.getItem("token");
+    localStorage.removeItem("token");
+    if (hadToken) notifyAuthChange(); // só notifica se havia sessão ativa
+    throw new Error("Sessão expirada. Faça login novamente.");
+  }
+
   const text = await res.text();
   let data: Record<string, unknown> = {};
-
   try {
     data = text ? JSON.parse(text) : {};
   } catch {
