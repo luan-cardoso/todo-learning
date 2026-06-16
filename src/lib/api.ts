@@ -1,7 +1,6 @@
 import { notifyAuthChange } from "./authSession";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
-const API_KEY = import.meta.env.VITE_API_KEY;
 
 function getToken() {
   return localStorage.getItem("token");
