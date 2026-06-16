@@ -18,7 +18,6 @@ export async function apiFetch(path: string, options: FetchOptions = {}) {
 
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
-    "x-api-key": API_KEY,
   };
 
   if (auth) {
