@@ -48,7 +48,7 @@ export default function RegisterPage() {
           name="name"
           maxLength={20}
           placeholder="Luan Cardoso"
-          className="text-sm ring-1 ring-gray-300 hover:ring-amber-500 outline-0 p-2 rounded-md duration-200"
+          className="text-sm ring-1 ring-gray-300 hover:ring-blue-200 outline-0 p-2 rounded-md duration-200"
           value={form.name}
           onChange={handleChange}
           required
@@ -64,7 +64,7 @@ export default function RegisterPage() {
           name="email"
           type="email"
           placeholder="email@example.com"
-          className="text-sm ring-1 ring-gray-300 hover:ring-amber-500 outline-0 p-2 rounded-md duration-200"
+          className="text-sm ring-1 ring-gray-300 hover:ring-blue-200 outline-0 p-2 rounded-md duration-200"
           value={form.email}
           onChange={handleChange}
           required
@@ -81,7 +81,7 @@ export default function RegisterPage() {
           name="password"
           type="password"
           placeholder="Senha"
-          className="text-sm ring-1 ring-gray-300 hover:ring-amber-500 outline-0 p-2 rounded-md duration-200"
+          className="text-sm ring-1 ring-gray-300 hover:ring-blue-200 outline-0 p-2 rounded-md duration-200"
           value={form.password}
           onChange={handleChange}
           required

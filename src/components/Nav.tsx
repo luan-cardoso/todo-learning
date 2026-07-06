@@ -18,7 +18,7 @@ export default function Nav({ onAddClick }: NavProps) {
     <div className=" mx-auto max-w-6xl flex items-center justify-between w-full py-6">
       <h1 className="font-semibold">todo learning</h1>
       <div className="flex items-center gap-4">
-        <span className="flex items-center text-sm font-medium  bg-black/25 ring-1  ring-amber-400/50 rounded-xl py-2 px-4 shadow-2xl">
+        <span className="flex items-center text-sm font-medium  bg-black/25 ring-1  ring-blue-200/50 rounded-xl py-2 px-4 shadow-2xl">
           {userName ? userName : <NavLink to="/login">Login</NavLink>}
         </span>
         {userName && (
@@ -29,7 +29,7 @@ export default function Nav({ onAddClick }: NavProps) {
             type="button"
             onClick={handleLogout}
             aria-label="Sair da conta"
-            className="text-neutral-300 hover:text-amber-400 transition-colors cursor-pointer p-1"
+            className="text-neutral-300 hover:text-blue-200 transition-colors cursor-pointer p-1"
           >
             <FontAwesomeIcon icon={faArrowRightFromBracket} size="lg" />
           </button>

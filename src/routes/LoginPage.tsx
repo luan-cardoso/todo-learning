@@ -48,7 +48,7 @@ export default function LoginPage() {
           name="email"
           type="email"
           placeholder="email@example.com"
-          className="text-sm ring-1 ring-gray-300 hover:ring-amber-500 outline-0 p-2 rounded-md duration-200"
+          className="text-sm ring-1 ring-gray-300 hover:ring-blue-200 outline-0 p-2 rounded-md duration-200"
           value={form.email}
           onChange={handleChange}
           required
@@ -64,7 +64,7 @@ export default function LoginPage() {
           name="password"
           type="password"
           placeholder="Senha"
-          className="text-sm ring-1 ring-gray-300 hover:ring-amber-500 outline-0 p-2 rounded-md duration-200"
+          className="text-sm ring-1 ring-gray-300 hover:ring-blue-200 outline-0 p-2 rounded-md duration-200"
           value={form.password}
           onChange={handleChange}
           required
@@ -82,7 +82,7 @@ export default function LoginPage() {
 
       <NavLink
         to="/register"
-        className="absolute top-5 right-10 font-medium text-sm hover:text-amber-500 duration-300"
+        className="absolute top-5 right-10 font-medium text-sm hover:text-blue-200 duration-300"
       >
         Criar conta
       </NavLink>

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { createTask } from "../lib/tasks";
+import { createTask, updateTask } from "../lib/tasks";
+import type { TaskListItem } from "../lib/taskPagination";
 import Button from "./Button";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faPen } from "@fortawesome/free-solid-svg-icons";
 
 type Priority = "low" | "medium" | "high";
 
@@ -11,21 +12,24 @@ const priorityOptions: {
   badge: string;
 }[] = [
   { value: "low", label: "Fácil", badge: "bg-emerald-300 text-neutral-700" },
-  { value: "medium", label: "Médio", badge: "bg-amber-300 text-neutral-700" },
+  { value: "medium", label: "Médio", badge: "bg-blue-200 text-neutral-700" },
   { value: "high", label: "Difícil", badge: "bg-red-300 text-neutral-700" },
 ];
 
 interface Props {
   onClose: () => void;
-  onCreated: () => void;
+  onSuccess: () => void;
+  task?: TaskListItem;
 }
 
-export default function TaskForm({ onClose, onCreated }: Props) {
+export default function TaskForm({ onClose, onSuccess, task }: Props) {
+  const isEditing = !!task;
+
   const [form, setForm] = useState({
-    title: "",
-    subject: "",
-    description: "",
-    priority: "medium" as Priority,
+    title: task?.title ?? "",
+    subject: task?.subject ?? "",
+    description: task?.description ?? "",
+    priority: (task?.priority ?? "medium") as Priority,
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -46,8 +50,12 @@ export default function TaskForm({ onClose, onCreated }: Props) {
     setLoading(true);
 
     try {
-      await createTask(form);
-      onCreated();
+      if (isEditing) {
+        await updateTask(task._id, form);
+      } else {
+        await createTask(form);
+      }
+      onSuccess();
       onClose();
     } catch (err) {
       if (err instanceof Error) {
@@ -73,12 +81,14 @@ export default function TaskForm({ onClose, onCreated }: Props) {
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-5 right-10 font-medium text-sm hover:text-amber-500 duration-300 cursor-pointer"
+          className="absolute top-5 right-10 font-medium text-sm hover:text-blue-200 duration-300 cursor-pointer"
         >
           Cancelar
         </button>
 
-        <h1 className="text-2xl font-bold">Criar tarefa</h1>
+        <h1 className="text-2xl font-bold">
+          {isEditing ? "Editar tarefa" : "Criar tarefa"}
+        </h1>
 
         <div className="flex flex-col gap-2">
           <label className="text-sm font-semibold" htmlFor="title">
@@ -91,9 +101,9 @@ export default function TaskForm({ onClose, onCreated }: Props) {
             value={form.title}
             onChange={handleChange}
             required
-            maxLength={12}
+            maxLength={20}
             autoComplete="off"
-            className="text-sm ring-1 ring-gray-300 hover:ring-amber-500 outline-0 p-2 rounded-md duration-200"
+            className="text-sm ring-1 ring-gray-300 hover:ring-blue-200 outline-0 p-2 rounded-md duration-200"
           />
         </div>
 
@@ -110,7 +120,7 @@ export default function TaskForm({ onClose, onCreated }: Props) {
             required
             maxLength={10}
             autoComplete="off"
-            className="text-sm ring-1 ring-gray-300 hover:ring-amber-500 outline-0 p-2 rounded-md duration-200"
+            className="text-sm ring-1 ring-gray-300 hover:ring-blue-200 outline-0 p-2 rounded-md duration-200"
           />
         </div>
 
@@ -124,8 +134,8 @@ export default function TaskForm({ onClose, onCreated }: Props) {
             placeholder="Descrição (opcional)"
             value={form.description}
             onChange={handleChange}
-            maxLength={100}
-            className="text-sm ring-1 ring-gray-300 hover:ring-amber-500 outline-0 p-2 rounded-md duration-200 resize-none h-24"
+            maxLength={120}
+            className="text-sm ring-1 ring-gray-300 hover:ring-blue-200 outline-0 p-2 rounded-md duration-200 resize-none h-24"
           />
         </div>
 
@@ -166,10 +176,10 @@ export default function TaskForm({ onClose, onCreated }: Props) {
 
         <Button
           type="submit"
-          buttonLabel="Criar"
-          loadingLabel="Criando..."
+          buttonLabel={isEditing ? "Salvar" : "Criar"}
+          loadingLabel={isEditing ? "Salvando..." : "Criando..."}
           loading={loading}
-          icon={faPlus}
+          icon={isEditing ? faPen : faPlus}
         />
       </form>
     </div>

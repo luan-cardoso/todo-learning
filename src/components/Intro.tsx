@@ -13,7 +13,7 @@ export default function Intro({ pendingTasks }: IntroProps) {
           </p>
         </div>
         <p className="text-sm tracking-wider font-semibold mt-4">
-          <span className="bg-amber-500 rounded-full h-1.5 w-1.5 inline-block mb-0.5" />{" "}
+          <span className="bg-blue-200 rounded-full h-1.5 w-1.5 inline-block mb-0.5" />{" "}
           Temas pendentes: {pendingTasks}
         </p>
       </div>

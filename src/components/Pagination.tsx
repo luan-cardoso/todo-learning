@@ -34,7 +34,7 @@ const Pagination: FC<PaginationProps> = ({
         type="button"
         onClick={onPrev}
         disabled={!hasPrev || loading}
-        className="flex items-center gap-2 text-xs font-semibold tracking-wide px-4 py-2 rounded-xl bg-white/5 ring-1 ring-white/10 hover:ring-amber-500/50 transition disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:ring-white/10 cursor-pointer"
+        className="flex items-center gap-2 text-xs font-semibold tracking-wide px-4 py-2 rounded-xl bg-white/5 ring-1 ring-white/10 hover:ring-blue-200/50 transition disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:ring-white/10 cursor-pointer"
       >
         <FontAwesomeIcon icon={faChevronLeft} className="text-xs" />
         Anterior
@@ -47,7 +47,7 @@ const Pagination: FC<PaginationProps> = ({
         type="button"
         onClick={onNext}
         disabled={!hasNext || loading}
-        className="flex items-center gap-2 text-xs font-semibold tracking-wide px-4 py-2 rounded-xl bg-white/5 ring-1 ring-white/10 hover:ring-amber-500/50 transition disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:ring-white/10 cursor-pointer"
+        className="flex items-center gap-2 text-xs font-semibold tracking-wide px-4 py-2 rounded-xl bg-white/5 ring-1 ring-white/10 hover:ring-blue-200/50 transition disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:ring-white/10 cursor-pointer"
       >
         Próxima
         <FontAwesomeIcon icon={faChevronRight} className="text-xs" />

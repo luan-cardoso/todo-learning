@@ -100,6 +100,11 @@ export function useTasks() {
     refreshPendingCount();
   }
 
+  function refreshCurrentPage() {
+    fetchPage(page);
+    refreshPendingCount();
+  }
+
   function goToPrevPage() {
     if (page > 1) fetchPage(page - 1);
   }
@@ -118,6 +123,7 @@ export function useTasks() {
     handleToggle,
     handleDelete,
     refetch,
+    refreshCurrentPage,
     goToPrevPage,
     goToNextPage,
   };
